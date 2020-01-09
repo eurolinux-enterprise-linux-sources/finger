@@ -1,7 +1,7 @@
 Summary: The finger client
 Name: finger
 Version: 0.17
-Release: 39%{?dist}
+Release: 40%{?dist}
 License: BSD
 Group: Applications/Internet
 Source: ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/bsd-finger-%{version}.tar.gz
@@ -17,6 +17,8 @@ Patch8: bsd-finger-0.17-strip.patch
 Patch9: bsd-finger-0.17-utmp.patch
 Patch10: bsd-finger-wide-char-support5.patch
 Patch11: bsd-finger-0.17-init-realname.patch
+Patch12: bsd-finger-0.17-match_sigsegv.patch
+
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: glibc-devel
 
@@ -56,7 +58,8 @@ and you'd like finger information to be available.
 %patch8 -p1 -b .strip
 %patch9 -p1 -b .utmp
 %patch10 -p1 -b .widechar
-%patch11 -p1 
+%patch11 -p1
+%patch12 -p1 -b .sigsegv
 
 %build
 sh configure --enable-ipv6
@@ -98,6 +101,9 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_mandir}/man8/fingerd.8*
 
 %changelog
+* Wed Mar 26 2014 Tomas Hozza <thozza@redhat.com> - 0.17-40
+- Fix segfault when user in /etc/passwd has no real name (#816328)
+
 * Mon Sep  7 2009 Radek Vokal <rvokal@redhat.com> - 0.17-39
 - init realname fix (#520203)
 
