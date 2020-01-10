@@ -3,7 +3,7 @@
 Summary: The finger client
 Name: finger
 Version: 0.17
-Release: 52%{?dist}
+Release: 49%{?dist}
 License: BSD
 Group: Applications/Internet
 
@@ -44,7 +44,6 @@ from other systems.
 %package server
 Summary: The finger daemon
 Group: System Environment/Daemons
-Requires:         finger
 Requires:         systemd
 Requires(post):   systemd
 Requires(preun):  systemd
@@ -136,15 +135,6 @@ make INSTALLROOT=%{buildroot} install
 
 
 %changelog
-* Tue Aug 19 2014 Tomas Hozza <thozza@redhat.com> - 0.17-52
-- server subpackage now requires the finger utility (#1095356)
-
-* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 0.17-51
-- Mass rebuild 2014-01-24
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.17-50
-- Mass rebuild 2013-12-27
-
 * Mon Jul 22 2013 Tomas Hozza <thozza@redhat.com> - 0.17-49
 - Compile finger with Full RELRO
 - Explicitly use gcc
