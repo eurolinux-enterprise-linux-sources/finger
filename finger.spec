@@ -3,7 +3,7 @@
 Summary: The finger client
 Name: finger
 Version: 0.17
-Release: 49%{?dist}
+Release: 51%{?dist}
 License: BSD
 Group: Applications/Internet
 
@@ -135,6 +135,12 @@ make INSTALLROOT=%{buildroot} install
 
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 0.17-51
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.17-50
+- Mass rebuild 2013-12-27
+
 * Mon Jul 22 2013 Tomas Hozza <thozza@redhat.com> - 0.17-49
 - Compile finger with Full RELRO
 - Explicitly use gcc
